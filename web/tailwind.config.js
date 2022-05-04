@@ -6,7 +6,8 @@ module.exports = {
       colors: {
         brand: {
           surface: '#8257E5',
-          hover: '#996DFF'
+          hover: '#996DFF',
+          check: '#77B255'
         },
         dark: {
           surface: {
@@ -48,8 +49,14 @@ module.exports = {
       },
       height: {
         '18': '4.5rem'
+      },
+      borderRadius: {
+        md: '4px'
       }
     },
   },
-  plugins: [],
+  plugins: [
+    require('@tailwindcss/forms'),
+    require('tailwind-scrollbar')
+  ],
 }

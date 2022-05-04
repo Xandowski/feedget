@@ -1,12 +1,8 @@
-import { Nav } from "./components/Nav"
-import { Widget } from "./components/Widget"
+import { Index } from "./pages"
 
 export const App = () =>{
   return (
-    <>
-      <Nav/>
-      <Widget/>
-    </>
+    <Index/>
   )
 }
 
