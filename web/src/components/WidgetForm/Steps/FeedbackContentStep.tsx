@@ -19,6 +19,16 @@ export const FeedbackContentStep = ({
 
   const handleSubmitFeedback = (event: FormEvent) => {
     event.preventDefault()
+
+    fetch('http://localhost:3333/feedbacks', {
+      method: 'POST',
+      mode: 'cors',
+      headers: {
+        "Content-type": "application/json; charset=UTF-8",
+        "Access-Control-Allow-Origin": "*" 
+      }
+    })
+
     console.log({
       screenshot,
       comment
@@ -44,7 +54,7 @@ export const FeedbackContentStep = ({
       <form
         onSubmit={handleSubmitFeedback} 
         className="flex flex-col gap-2 py-8 w-full"
-        onChange={event => setComment(event.target.value)}
+        onChange={event => setComment((event.target as HTMLTextAreaElement).value)}
       >
         <textarea 
           className="min-w-[250px] w-full min-h-[112px] text-sm border-light-surface-stroke rounded-md
