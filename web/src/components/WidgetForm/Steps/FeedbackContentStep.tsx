@@ -38,6 +38,16 @@ export const FeedbackContentStep = ({
   }
 
   const feedbackTypeInfo = feedbackTypes[feedbackTypeSelected]
+  let placeholder = ''
+
+  if(feedbackTypeInfo.title === 'Problema') {
+    placeholder = 'Qual é o seu problema?'
+  } else if (feedbackTypeInfo.title === 'Ideia') {
+    placeholder = 'Qual é a sua ideia?'
+  } else if (feedbackTypeInfo.title === 'Outro') {
+    placeholder = 'Você tem alguma sugestão?'
+  }
+
   return (
     <>
       <Header>
@@ -63,7 +73,7 @@ export const FeedbackContentStep = ({
           focus:ring-brand-surface
           focus:ring-1 resize-none
           focus:outline-none scrollbar-thumb-surface-stroke scrollbar-track-transparent scrollbar-thin dark:scrollbar-thumb-[#52525B]"
-          placeholder="Qual o problema?"
+          placeholder={placeholder}
         />
 
         <footer className="flex gap-2 justify-between items-center">

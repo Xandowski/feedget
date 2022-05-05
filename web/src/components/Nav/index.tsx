@@ -1,5 +1,6 @@
 import { Moon, Sun } from 'phosphor-react'
 import { MouseEventHandler } from 'react'
+import Logo from '../../assets/imgs/logo.svg'
 import { useDarkMode } from '../../hook/useDarkMode'
 
 type SwitchThemeButtonProps = {
@@ -28,8 +29,9 @@ export const Nav = () => {
   return (
     <nav className="
     bg-light-surface-secondary-main dark:bg-dark-surface-secondary-main w-screen h-18
-      flex justify-end items-center p-8
+      flex justify-between items-center p-8
     ">
+      <img src={Logo} alt="logo" />
       <SwitchThemeButton theme={colorTheme} onClick={switchTheme}
         className=""
       />
