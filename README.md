@@ -16,7 +16,7 @@ This application was developed during NLW08 Return, made by [Rocketseat](https:/
 
 ## Preview
 
-[![Deploy with Vercel](https://vercel.com/button)]()
+[![Deploy with Vercel](https://vercel.com/button)](https://feed-2eyy5k764-xandowski.vercel.app/)
 
 ## About
 
