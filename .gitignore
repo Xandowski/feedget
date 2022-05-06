@@ -24,3 +24,6 @@ dist-ssr
 *.sw?
 .env
 dev.db
+
+.env
+.env.local

@@ -61,3 +61,5 @@ cd web
 yarn
 yarn dev
 ```
+
+inside web change .env.example to .env.local em put your localhost url for the api.

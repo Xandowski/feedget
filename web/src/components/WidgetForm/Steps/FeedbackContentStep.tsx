@@ -23,7 +23,7 @@ export const FeedbackContentStep = ({
     
     setIsSendingFeedback(true)
 
-    await fetch('http://localhost:3333/feedback', {
+    await fetch(`${import.meta.env.VITE_API_URL}/feedback`, {
       method: 'POST',
       mode: 'cors',
       headers: {
