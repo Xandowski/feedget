@@ -52,7 +52,12 @@ yarn
 yarn dev
 ```
 
-inside server create a .env.local file based on .env.example
+inside server create a .env file based on .env.example
+then run:
+
+```sh
+npx prisma generate
+```
 
 to run frontend:
 
