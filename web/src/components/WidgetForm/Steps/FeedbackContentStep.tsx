@@ -1,5 +1,6 @@
 import { FormEvent, useState } from "react"
 import { FeedbackType, feedbackTypes } from ".."
+import { api } from "../../../services/api"
 import { BackButton } from "../../BackButton"
 import { Header } from "../../Header"
 import { SendButton } from "../../SendButton"
@@ -23,14 +24,10 @@ export const FeedbackContentStep = ({
     
     setIsSendingFeedback(true)
 
-    await fetch(`${import.meta.env.VITE_API_URL}feedback`, {
-      method: 'POST',
-      mode: 'cors',
-      headers: {
-        "Content-type": "application/json; charset=UTF-8",
-        "Access-Control-Allow-Origin": "*" 
-      },
-      body: JSON.stringify({type: feedbackTypeSelected, comment, screenshot})
+    api.post('/feedback', {
+      type: feedbackTypeSelected,
+      comment,
+      screenshot
     })
 
     setIsSendingFeedback(false)
