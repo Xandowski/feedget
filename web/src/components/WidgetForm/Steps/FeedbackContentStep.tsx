@@ -16,24 +16,24 @@ export const FeedbackContentStep = ({
 }: FeedbackContentStepProps) => {
   const [screenshot, setScreenshot] = useState<string | null>(null)
   const [comment, setComment] = useState('')
+  const [isSendingFeedback, setIsSendingFeedback] = useState(false)
 
-  const handleSubmitFeedback = (event: FormEvent) => {
+  const handleSubmitFeedback = async (event: FormEvent) => {
     event.preventDefault()
+    
+    setIsSendingFeedback(true)
 
-    fetch('http://localhost:3333/feedbacks', {
+    await fetch('http://localhost:3333/feedback', {
       method: 'POST',
       mode: 'cors',
       headers: {
         "Content-type": "application/json; charset=UTF-8",
         "Access-Control-Allow-Origin": "*" 
-      }
+      },
+      body: JSON.stringify({type: feedbackTypeSelected, comment, screenshot})
     })
 
-    console.log({
-      screenshot,
-      comment
-    })
-
+    setIsSendingFeedback(false)
     onFeedbackSent()
   }
 
@@ -81,7 +81,10 @@ export const FeedbackContentStep = ({
             screenshot={screenshot}
             onScreenshotTook={setScreenshot}
           />
-          <SendButton disabled={comment.length === 0}/>
+          <SendButton 
+            disabled={comment.length === 0 || isSendingFeedback}
+            loading={isSendingFeedback}
+          />
         </footer>
       </form>
     </>
