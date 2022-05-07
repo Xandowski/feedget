@@ -8,10 +8,11 @@ This application was developed during NLW08 Return, made by [Rocketseat](https:/
 
 <div align="center">
 
-[![Languages](https://img.shields.io/github/languages/count/xandowski/feedget?color=%2304D361)]()
-[![RespositorySize](https://img.shields.io/github/repo-size/xandowski/feedget)]()
-[![lastCommit](https://img.shields.io/github/last-commit/xandowski/feedget)]()
+[![Languages](https://img.shields.io/github/languages/count/xandowski/feedget?color=blueviolet)]()
+[![RespositorySize](https://img.shields.io/github/repo-size/xandowski/feedget?color=blueviolet)]()
+[![lastCommit](https://img.shields.io/github/last-commit/xandowski/feedget?color=blueviolet)]()
 
+[![Rocketseat](https://badgen.net/discord/members/Rocketseat?color=8257E5)](https://discord.gg/rocketseat)
 </div>
 
 ## Preview
@@ -34,9 +35,14 @@ Feedget is a feedback application, you choose between 3 options, problem, idea a
 - [HeadlessUI](https://headlessui.dev/)
 - [NodeJS](https://nodejs.org/en/)
 - [Express](https://expressjs.com/pt-br/)
+- [Axios](https://axios-http.com/ptbr/docs/intro)
 - [Prisma](https://www.prisma.io/)
 - [Jest](https://jestjs.io/pt-BR/)
 - [Vite](https://vitejs.dev/)
+
+## Demo
+
+<img src="web/src/assets/videos/feedget-presentation.gif">
 
 ## Getting started
 
@@ -68,3 +74,5 @@ yarn dev
 ```
 
 inside web change .env.example to .env.local em put your localhost url for the api.
+
+## Join rocketseat discord community
