@@ -1,10 +1,11 @@
 import { SubmitFeedbackUseCase } from "./submitFeedbackUseCase"
 
 const createFeedbackSpy = jest.fn()
+const readFeedbackSpy = jest.fn()
 const sendMailSpy = jest.fn()
 
 const submitFeedbackUseCase = new SubmitFeedbackUseCase(
-  { create: createFeedbackSpy},
+  { create: createFeedbackSpy, read: readFeedbackSpy},
   { sendMail: sendMailSpy}
 )
 
@@ -13,7 +14,9 @@ describe('Submit feedback', () => {
     await expect(submitFeedbackUseCase.execute({
       type: 'BUG',
       comment: 'bugadoo',
-      screenshot: 'data:image/png;base64,asasa.png'
+      screenshot: 'data:image/png;base64,asasa.png',
+      username: 'user',
+      profilepic: 'https://avatar'
     })).resolves.not.toThrow()
 
     expect(createFeedbackSpy).toHaveBeenCalled()
@@ -24,7 +27,9 @@ describe('Submit feedback', () => {
     await expect(submitFeedbackUseCase.execute({
       type: '',
       comment: 'bugadoo',
-      screenshot: 'data:image/png;base64,asasa.png'
+      screenshot: 'data:image/png;base64,asasa.png',
+      username: 'user',
+      profilepic: 'https://avatar'
     })).rejects.toThrow()
   })
 
@@ -32,15 +37,19 @@ describe('Submit feedback', () => {
     await expect(submitFeedbackUseCase.execute({
       type: 'BUG',
       comment: '',
-      screenshot: 'data:image/png;base64,asasa.png'
+      screenshot: 'data:image/png;base64,asasa.png',
+      username: 'user',
+      profilepic: 'https://avatar'
     })).rejects.toThrow()
   })
 
-  it('should not be able to submit a feedback with aa invalid screenshot', async () => {
+  it('should not be able to submit a feedback with an invalid screenshot', async () => {
     await expect(submitFeedbackUseCase.execute({
       type: 'BUG',
       comment: 'comentario',
-      screenshot: 'asasa.png'
+      screenshot: 'asasa.png',
+      username: 'user',
+      profilepic: 'https://avatar'
     })).rejects.toThrow()
   })
 })
