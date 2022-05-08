@@ -45,13 +45,21 @@ module.exports = {
         },
       },
       width: {
-        '84': '21rem'
+        '84': '21rem',
+        '86': '21rem'
       },
       height: {
         '18': '4.5rem'
       },
       borderRadius: {
         md: '4px'
+      },
+      maxWidth: {
+        '6xl':  '1120px'
+      },
+      boxShadow: {
+        'lgl': '-15px -15px 9px 0px rgba(0,0,0,0.1)',
+        'lgd': '-15px -15px 9px 0px rgba(39, 39, 42, 0.7)',
       }
     },
   },
