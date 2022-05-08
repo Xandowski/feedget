@@ -1,40 +1,32 @@
-import { Moon, Sun } from 'phosphor-react'
-import { MouseEventHandler } from 'react'
-import Logo from '../../assets/imgs/logo.svg'
-import { useDarkMode } from '../../hook/useDarkMode'
+import { useAuth0 } from "@auth0/auth0-react";
+import Logo from '../../assets/imgs/logo.svg';
 
-type SwitchThemeButtonProps = {
-  theme: string
-  onClick: MouseEventHandler<SVGSVGElement>
-  className: string
-}
 
-export const SwitchThemeButton = ({theme, onClick, className}: SwitchThemeButtonProps) => {
+const LogoutButton = ({}) => {
+  const { user, logout } = useAuth0()
 
   return (
-    theme === 'light' ? 
-      <Sun onClick={onClick} className={className} size={26} color="white"/> : 
-      <Moon onClick={onClick} className={className} size={26}/>
+    <div className="flex flex-col justify-center items-center">
+      <div>
+        <img className="w-10 h-10 rounded-full" src={user?.picture} alt="foto do usuário" />
+      </div>
+      <button className="text-sm text-light-surface-text-secondary dark:text-dark-surface-text-secondary" onClick={() => logout({ returnTo: window.location.origin })}>
+        Sair
+      </button>
+    </div>
   )
 }
 
-export const Nav = () => {
-  const [colorTheme, setTheme] = useDarkMode()
-  
-  const switchTheme = () => {
-    setTheme(colorTheme)
-    return 
-  }
 
+
+export const Nav = () => {
   return (
     <nav className="
     bg-light-surface-secondary-main dark:bg-dark-surface-secondary-main w-screen h-18
-      flex justify-between items-center p-8
+      flex justify-between items-center md:py-8 md:px-40 px-20
     ">
-      <img src={Logo} alt="logo" />
-      <SwitchThemeButton theme={colorTheme} onClick={switchTheme}
-        className=""
-      />
+      <img className="sm:w-32 w-24" src={Logo} alt="logo" />
+      <LogoutButton/>
     </nav>
   )
 }
