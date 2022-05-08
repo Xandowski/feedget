@@ -1,9 +1,10 @@
-import { FormEvent, useState } from "react"
+import { useAuth0 } from "@auth0/auth0-react"
+import { FormEvent, useEffect, useState } from "react"
 import { FeedbackType, feedbackTypes } from ".."
 import { api } from "../../../services/api"
 import { BackButton } from "../../BackButton"
-import { Header } from "../../Header"
 import { SendButton } from "../../SendButton"
+import { Header } from "../../WidgetHeader"
 import { ScreenshotButton } from "../ScreenshotButton"
 
 interface FeedbackContentStepProps {
@@ -15,9 +16,26 @@ interface FeedbackContentStepProps {
 export const FeedbackContentStep = ({
   feedbackTypeSelected, onFeedbackRestartRequest, onFeedbackSent
 }: FeedbackContentStepProps) => {
+  const { user, isAuthenticated } = useAuth0()
   const [screenshot, setScreenshot] = useState<string | null>(null)
   const [comment, setComment] = useState('')
   const [isSendingFeedback, setIsSendingFeedback] = useState(false)
+  const [username, setUsername] = useState<string>('Anônimo')
+  const [profilepic, setProfilepic] = useState<string | null>(null)
+
+  useEffect(() =>{
+    if (user?.nickname) {
+      setUsername(user?.nickname)
+    }
+
+    if (user?.given_name) {
+      setUsername(user?.given_name)
+    }
+  
+    if (user?.picture) {
+      setProfilepic(user.picture)
+    }
+  }, [])
 
   const handleSubmitFeedback = async (event: FormEvent) => {
     event.preventDefault()
@@ -27,7 +45,9 @@ export const FeedbackContentStep = ({
     await api.post('/feedback', {
       type: feedbackTypeSelected,
       comment,
-      screenshot
+      screenshot,
+      username,
+      profilepic
     })
 
     setIsSendingFeedback(false)

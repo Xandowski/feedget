@@ -1,5 +1,5 @@
 import { Check } from "phosphor-react"
-import { Header } from "../../Header"
+import { Header } from "../../WidgetHeader"
 
 interface FeedbackSuccesStepProps {
   onFeedbackRestartRequest: () => void,
