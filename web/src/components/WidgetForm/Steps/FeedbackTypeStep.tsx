@@ -1,5 +1,5 @@
 import { FeedbackType, feedbackTypes } from ".."
-import { Header } from "../../Header"
+import { Header } from "../../WidgetHeader"
 
 interface FeedbackTypeStepProps {
   onFeedbackTypeChanged: (type: FeedbackType) => void
