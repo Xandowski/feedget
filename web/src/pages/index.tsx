@@ -45,7 +45,7 @@ export const Index = () =>{
   return (
     <>
       <Nav/>
-      <section className="flex flex-col items-center mt-12  w-full h-full">
+      <section className="flex flex-col items-center mt-12  w-full min-h-[calc(100vh-7.5rem)]">
         {isAuthenticated ? (
           <>
             <span className="text-light-surface-text-secondary dark:text-dark-surface-text-secondary font-medium">Bem vindo {user?.nickname || user?.given_name}. </span>
