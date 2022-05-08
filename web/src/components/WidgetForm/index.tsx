@@ -12,7 +12,7 @@ export const feedbackTypes = {
     title: 'Problema',
     image: {
       source: bugImageUrl,
-      alt: 'Imagem de um inset'
+      alt: 'Imagem de um inseto'
     }
   },
   IDEA : {
@@ -43,7 +43,7 @@ export const WidgetForm = () => {
   }
 
   return (
-    <div className="dark:bg-dark-surface-primary mb-4 p-4 rounded-2xl flex flex-col items-center shadow-lg w-[calc(100vw-2rem)] md:w-auto">
+    <div className="bg-light-surface-primary dark:bg-dark-surface-primary mb-4 p-4 rounded-2xl flex flex-col items-center shadow-md w-[calc(100vw-2rem)] md:w-auto">
       {feedbackSent ? (
         <FeedbackSuccesStep onFeedbackRestartRequest={handleRestartFeedback}/>
       ) : (
