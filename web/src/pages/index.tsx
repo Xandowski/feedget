@@ -1,7 +1,7 @@
 import { useAuth0 } from "@auth0/auth0-react"
-import { CircleNotch } from "phosphor-react"
 import { useEffect, useState } from "react"
 import { FeedbackCard } from "../components/FeedbackCard"
+import { FeedbackCardLoading } from "../components/FeedbackCard/FeedbackCardLoading"
 import { Nav } from "../components/Nav"
 import { SwitchThemeButton } from "../components/SwitchThemeButton"
 import { WidgetButton } from "../components/WidgetButton"
@@ -55,26 +55,26 @@ export const Index = () =>{
           <h1 className="font-medium text-2xl text-light-surface-tooltip">Faça <span className="text-brand-surface cursor-pointer"><LoginButton/></span> para visualizar os feedbacks cadastrados.</h1>
         )}
 
-        {isLoading ? (
-          <div className="mt-8 max-w-[1072px] h-20 flex justify-center flex-wrap gap-8 text-brand-surface">
-            <CircleNotch weight="bold" className="w-14 h-14 animate-spin"/>
-          </div>
-        ): (
-          <div className="mt-8 mb-20 max-w-[1072px] h-full flex flex-wrap gap-8">
-            {feedbacks && feedbacks.length > 0 ? (
-              feedbacks.map((feedback, index) => {
-                return <FeedbackCard 
-                          key={index}
-                          type={feedback.type}
-                          comment={feedback.comment}
-                          screenshot={feedback.screenshot}
-                          profilePic={feedback.profilepic}
-                          username={feedback.username}
-                        />
-              })
-            ) : isAuthenticated && (<h1 className="font-medium text-1xl text-light-surface-tooltip">Seja o primeiro a cadastrar um feedback.</h1>)}
-          </div>
-        ) }
+        <div className="mt-8 mb-20 max-w-[1072px] h-full flex flex-wrap gap-8">
+          {isLoading ? (
+            <>
+              <FeedbackCardLoading/>
+              <FeedbackCardLoading/>
+              <FeedbackCardLoading/>
+            </>
+          ) : feedbacks && feedbacks.length > 0 ? (
+            feedbacks.map((feedback, index) => {
+              return <FeedbackCard 
+                        key={index}
+                        type={feedback.type}
+                        comment={feedback.comment}
+                        screenshot={feedback.screenshot}
+                        profilePic={feedback.profilepic}
+                        username={feedback.username}
+                      />
+            })
+          ) : isAuthenticated && (<h1 className="font-medium text-1xl text-light-surface-tooltip">Seja o primeiro a cadastrar um feedback.</h1>)}
+        </div>
       </section>
       <SwitchThemeButton theme={colorTheme} onClick={switchTheme}
         className="cursor-pointer absolute top-5 right-10"
