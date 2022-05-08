@@ -15,11 +15,11 @@ routes.get('/feedbacks', async (req, res) => {
 
   const feedbacks = await getFeedbacksUseCase.execute()
 
-  return res.sendStatus(200).send().json()
+  return res.send(feedbacks).sendStatus(200)
 })
 
 routes.post('/feedback', async (req, res) => {
-  const { type, comment, screenshot } = req.body
+  const { type, comment, screenshot, username, profilepic } = req.body
 
   const nodemailerMailAdapter = new NodemailerMailAdapter()
 
@@ -31,7 +31,9 @@ routes.post('/feedback', async (req, res) => {
   await submitFeedbackUseCase.execute({
     type,
     comment,
-    screenshot
+    screenshot,
+    username,
+    profilepic
   })
 
   return res.sendStatus(201).send()
