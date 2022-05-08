@@ -4,6 +4,8 @@ export interface FeedbackData {
   type: string,
   comment: string,
   screenshot?: string
+  username: string
+  profilepic?: string
 }
 
 
