@@ -1,8 +1,8 @@
 import { prisma } from "../../prisma"
-import { FeedbackCreateData, FeedbackRepository } from "../feedbacksRepository"
+import { FeedbackData, FeedbackRepository } from "../feedbacksRepository"
 
 export class PrismaFeedbackRepository implements FeedbackRepository {
-  async create({type, comment, screenshot}: FeedbackCreateData) {
+  async create({type, comment, screenshot}: FeedbackData) {
     await prisma.feedback.create({
       data: {
         type,
@@ -10,5 +10,11 @@ export class PrismaFeedbackRepository implements FeedbackRepository {
         screenshot
       }
     })
+  }
+
+  async read() {
+    const feedbacks = await prisma.feedback.findMany()
+
+    return feedbacks
   }
 }
