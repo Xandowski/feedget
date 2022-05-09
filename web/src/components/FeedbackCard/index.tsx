@@ -1,20 +1,33 @@
 import { useAuth0 } from "@auth0/auth0-react"
 import { CaretUp, User } from "phosphor-react"
+import { useState } from "react"
+import { api } from "../../services/api"
 import { FeedbackType, feedbackTypes } from "../WidgetForm"
 
 interface FeedbackCardProps {
+  id: string
   type: FeedbackType
   comment: string
   screenshot: string
   username: string
   profilePic: string | null
+  amount: number
+  email: string | null
 }
 
 export const FeedbackCard = ({
-  type, comment, profilePic, screenshot, username
+  id, type, comment, profilePic, screenshot, username, amount, email
 }:FeedbackCardProps) => {
   const {isAuthenticated } = useAuth0()
   const feedbackType = feedbackTypes[type]
+  const [vote, setVote] = useState(amount)
+
+  const handleVoteFeedback = async () => {
+    console.log({id, email})
+    await api.put(`/feedback/${id}`, {
+      email
+    })
+  }
 
   return (
     <div className="bg-light-surface-secondary-main dark:bg-dark-surface-primary w-86 h-80 rounded-lg flex flex-col items-center justify-between py-4 px-6 hover:translate-x-1 hover:translate-y-1 transition-transform hover:shadow-lgl dark:hover:shadow-lgd">
@@ -45,8 +58,10 @@ export const FeedbackCard = ({
           <span className="text-lg">{username}</span>
         </div>
         <div className="flex flex-col items-center">
-          <CaretUp/>
-          <span className="text-lg">1</span>
+          <button type="button" onClick={handleVoteFeedback}>
+            <CaretUp/>
+          </button>
+          <span className="text-lg">{amount}</span>
         </div>
       </footer>
     </div>

@@ -24,12 +24,16 @@ type FeedbackTypeProps = {
   screenshot: string
   username: string
   profilepic: string | null
+  amount: number
+  voters: string[]
+  email: string
 }
 
 export const Index = () =>{
   const { user, isAuthenticated, isLoading } = useAuth0()
   const [feedbacks, setFeedbacks] = useState<FeedbackTypeProps[] | null>(null)
   const [colorTheme, setTheme] = useDarkMode()
+  const email = user?.email ? user?.email : null
   
   const switchTheme = () => {
     setTheme(colorTheme)
@@ -38,10 +42,14 @@ export const Index = () =>{
   useEffect(() => {
     if (isAuthenticated) {
       api.get('/feedbacks')
-        .then(res => setFeedbacks(res.data))
+        .then(res => {
+          // console.log(res.data)
+          setFeedbacks(res.data)
+        })
     }
   }, [isAuthenticated])
 
+  console.log(user)
   return (
     <>
       <Nav/>
@@ -52,7 +60,7 @@ export const Index = () =>{
             <h1 className="font-medium text-lg px-2 sm:px-0 sm:text-2xl text-light-surface-text-secondary dark:text-dark-surface-text-secondary">Experimente enviar um feedback de um bug na aplicação.</h1>
           </>
         ) : (
-          <h1 className="font-medium text-2xl text-light-surface-tooltip">Faça <span className="text-brand-surface cursor-pointer"><LoginButton/></span> para visualizar os feedbacks cadastrados.</h1>
+          <h1 className="font-medium text-2xl text-light-surface-text-secondary dark:text-dark-surface-text-secondary">Faça <span className="text-brand-surface cursor-pointer"><LoginButton/></span> para visualizar os feedbacks cadastrados.</h1>
         )}
 
         <div className="mt-8 mb-20 max-w-[1072px] h-full flex flex-wrap gap-8">
@@ -64,6 +72,7 @@ export const Index = () =>{
             </>
           ) : feedbacks && feedbacks.length > 0 ? (
             feedbacks.map((feedback, index) => {
+            
               return <FeedbackCard 
                         key={index}
                         type={feedback.type}
@@ -71,6 +80,9 @@ export const Index = () =>{
                         screenshot={feedback.screenshot}
                         profilePic={feedback.profilepic}
                         username={feedback.username}
+                        amount={feedback.amount}
+                        id={feedback.id}
+                        email={email}
                       />
             })
           ) : isAuthenticated && (<h1 className="font-medium text-1xl text-light-surface-tooltip">Seja o primeiro a cadastrar um feedback.</h1>)}
