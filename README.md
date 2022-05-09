@@ -15,19 +15,19 @@ This application was developed during NLW08 Return, made by [Rocketseat](https:/
 [![Rocketseat](https://badgen.net/discord/members/Rocketseat?color=8257E5)](https://discord.gg/rocketseat)
 </div>
 
-## Preview
+## ▶ Preview
 
-[![Deploy with Vercel](https://vercel.com/button)](https://feedget-topaz.vercel.app/)
+[![Deploy with Vercel](https://vercel.com/button)](https://feedget-xandowski.vercel.app/)
 
-## About
+## 📃 About
 
 Feedget is a feedback application, you choose between 3 options, problem, idea and other. You can take a screenshot of the screen to send along with the comment.
 
-## Layout
+## 🎨 Layout
 
 - [Layout Figma](https://www.figma.com/community/file/1102912516166573468)
 
-## Build with
+## 🛠 Build with
 
 - [ReactJS](https://reactjs.org/docs/getting-started.html)
 - [TypeScript](https://www.typescriptlang.org/docs/)
@@ -39,12 +39,22 @@ Feedget is a feedback application, you choose between 3 options, problem, idea a
 - [Prisma](https://www.prisma.io/)
 - [Jest](https://jestjs.io/pt-BR/)
 - [Vite](https://vitejs.dev/)
+- [Auth0](https://auth0.com/docs/)
 
-## Demo
+## 🎞 Demo
 
 <img src="web/src/assets/videos/feedget-presentation.gif">
 
-## Getting started
+## ⚙ Features
+
+- [ ] Reload feedbacks after a new feedback registered
+- [ ] Reload feedback votes after a new vote
+- [ ] Fix screenshot url
+- [ ] Only logged in users can vote
+- [ ] Each users can only vote once
+- [ ] A user can unvote
+
+## 💻 Getting started
 
 ```sh
 git clone https://github.com/xandowski/feedget.git && cd feedget
@@ -74,5 +84,3 @@ yarn dev
 ```
 
 inside web change .env.example to .env.local em put your localhost url for the api.
-
-## Join rocketseat discord community
