@@ -16,7 +16,7 @@ routes.get('/feedbacks', async (req, res) => {
 
   const feedbacks = await getFeedbacksUseCase.execute()
 
-  return res.send(feedbacks).sendStatus(200)
+  return res.send(feedbacks)
 })
 
 routes.put('/feedback/:id', async (req, res) => {
