@@ -3,6 +3,7 @@ import { NodemailerMailAdapter } from "./adapters/nodemailer/nodemailerMailAdapt
 import { PrismaFeedbackRepository } from "./repositories/prisma/prismaFeedbacksRepository"
 import { GetFeedbacksUseCase } from "./useCases/getFeedbacksUseCase"
 import { SubmitFeedbackUseCase } from "./useCases/submitFeedbackUseCase"
+import { UpdateFeedbackVotesUseCase } from "./useCases/updateFeedbackVotesUseCase"
 
 export const routes = Router()
 
@@ -16,6 +17,20 @@ routes.get('/feedbacks', async (req, res) => {
   const feedbacks = await getFeedbacksUseCase.execute()
 
   return res.send(feedbacks).sendStatus(200)
+})
+
+routes.put('/feedback/:id', async (req, res) => {
+  const id = req.params.id
+  const { email } = req.body
+  
+  const updateFeedbackVotesUseCase = new UpdateFeedbackVotesUseCase(
+    prismaFeedbackRepository
+  )
+
+  await updateFeedbackVotesUseCase.execute({
+    id,
+    email
+  })
 })
 
 routes.post('/feedback', async (req, res) => {
@@ -33,7 +48,9 @@ routes.post('/feedback', async (req, res) => {
     comment,
     screenshot,
     username,
-    profilepic
+    profilepic,
+    amount: 0,
+    voters: []
   })
 
   return res.sendStatus(201).send()

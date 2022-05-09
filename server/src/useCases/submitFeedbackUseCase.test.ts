@@ -2,10 +2,11 @@ import { SubmitFeedbackUseCase } from "./submitFeedbackUseCase"
 
 const createFeedbackSpy = jest.fn()
 const readFeedbackSpy = jest.fn()
+const updateFeedbackSpy = jest.fn()
 const sendMailSpy = jest.fn()
 
 const submitFeedbackUseCase = new SubmitFeedbackUseCase(
-  { create: createFeedbackSpy, read: readFeedbackSpy},
+  { create: createFeedbackSpy, read: readFeedbackSpy, update: updateFeedbackSpy},
   { sendMail: sendMailSpy}
 )
 
@@ -16,7 +17,9 @@ describe('Submit feedback', () => {
       comment: 'bugadoo',
       screenshot: 'data:image/png;base64,asasa.png',
       username: 'user',
-      profilepic: 'https://avatar'
+      profilepic: 'https://avatar',
+      amount: 0,
+      voters: []
     })).resolves.not.toThrow()
 
     expect(createFeedbackSpy).toHaveBeenCalled()
@@ -29,7 +32,9 @@ describe('Submit feedback', () => {
       comment: 'bugadoo',
       screenshot: 'data:image/png;base64,asasa.png',
       username: 'user',
-      profilepic: 'https://avatar'
+      profilepic: 'https://avatar',
+      amount: 0,
+      voters: []
     })).rejects.toThrow()
   })
 
@@ -39,7 +44,9 @@ describe('Submit feedback', () => {
       comment: '',
       screenshot: 'data:image/png;base64,asasa.png',
       username: 'user',
-      profilepic: 'https://avatar'
+      profilepic: 'https://avatar',
+      amount: 0,
+      voters: []
     })).rejects.toThrow()
   })
 
@@ -49,7 +56,9 @@ describe('Submit feedback', () => {
       comment: 'comentario',
       screenshot: 'asasa.png',
       username: 'user',
-      profilepic: 'https://avatar'
+      profilepic: 'https://avatar',
+      amount: 0,
+      voters: []
     })).rejects.toThrow()
   })
 })
