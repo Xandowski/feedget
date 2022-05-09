@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1652037821279" clover="3.2.0">
-  <project timestamp="1652037821279" name="All files">
-    <metrics statements="90" coveredstatements="90" conditionals="18" coveredconditionals="16" methods="4" coveredmethods="4" elements="112" coveredelements="110" complexity="0" loc="90" ncloc="90" packages="2" files="2" classes="2"/>
+<coverage generated="1652056515166" clover="3.2.0">
+  <project timestamp="1652056515167" name="All files">
+    <metrics statements="94" coveredstatements="94" conditionals="18" coveredconditionals="16" methods="4" coveredmethods="4" elements="116" coveredelements="114" complexity="0" loc="94" ncloc="94" packages="2" files="2" classes="2"/>
     <package name="dist.useCases">
       <metrics statements="37" coveredstatements="37" conditionals="9" coveredconditionals="8" methods="2" coveredmethods="2"/>
       <file name="submitFeedbackUseCase.js" path="/home/xandowski/dev/feedget/server/dist/useCases/submitFeedbackUseCase.js">
@@ -46,9 +46,9 @@
       </file>
     </package>
     <package name="src.useCases">
-      <metrics statements="53" coveredstatements="53" conditionals="9" coveredconditionals="8" methods="2" coveredmethods="2"/>
+      <metrics statements="57" coveredstatements="57" conditionals="9" coveredconditionals="8" methods="2" coveredmethods="2"/>
       <file name="submitFeedbackUseCase.ts" path="/home/xandowski/dev/feedget/server/src/useCases/submitFeedbackUseCase.ts">
-        <metrics statements="53" coveredstatements="53" conditionals="9" coveredconditionals="8" methods="2" coveredmethods="2"/>
+        <metrics statements="57" coveredstatements="57" conditionals="9" coveredconditionals="8" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
         <line num="3" count="1" type="stmt"/>
@@ -61,25 +61,25 @@
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
         <line num="12" count="1" type="stmt"/>
-        <line num="13" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
         <line num="14" count="1" type="stmt"/>
-        <line num="15" count="1" type="stmt"/>
+        <line num="15" count="1" type="cond" truecount="1" falsecount="0"/>
         <line num="16" count="1" type="stmt"/>
         <line num="17" count="1" type="stmt"/>
-        <line num="18" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="19" count="4" type="stmt"/>
-        <line num="20" count="4" type="stmt"/>
-        <line num="21" count="4" type="cond" truecount="1" falsecount="0"/>
-        <line num="22" count="1" type="stmt"/>
-        <line num="23" count="1" type="stmt"/>
-        <line num="24" count="3" type="cond" truecount="1" falsecount="0"/>
-        <line num="25" count="4" type="cond" truecount="1" falsecount="0"/>
-        <line num="26" count="1" type="stmt"/>
-        <line num="27" count="1" type="stmt"/>
-        <line num="28" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="29" count="4" type="cond" truecount="1" falsecount="0"/>
-        <line num="30" count="1" type="stmt"/>
-        <line num="31" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="20" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="4" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
+        <line num="23" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="26" count="3" type="cond" truecount="1" falsecount="0"/>
+        <line num="27" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+        <line num="30" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="31" count="4" type="cond" truecount="1" falsecount="0"/>
         <line num="32" count="1" type="stmt"/>
         <line num="33" count="1" type="stmt"/>
         <line num="34" count="1" type="stmt"/>
@@ -96,12 +96,16 @@
         <line num="45" count="1" type="stmt"/>
         <line num="46" count="1" type="stmt"/>
         <line num="47" count="1" type="stmt"/>
-        <line num="48" count="4" type="cond" truecount="0" falsecount="1"/>
-        <line num="49" count="4" type="stmt"/>
-        <line num="50" count="4" type="stmt"/>
-        <line num="51" count="4" type="stmt"/>
-        <line num="52" count="1" type="cond" truecount="1" falsecount="0"/>
-        <line num="53" count="1" type="stmt"/>
+        <line num="48" count="1" type="stmt"/>
+        <line num="49" count="1" type="stmt"/>
+        <line num="50" count="1" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="52" count="4" type="cond" truecount="0" falsecount="1"/>
+        <line num="53" count="4" type="stmt"/>
+        <line num="54" count="4" type="stmt"/>
+        <line num="55" count="4" type="stmt"/>
+        <line num="56" count="1" type="cond" truecount="1" falsecount="0"/>
+        <line num="57" count="1" type="stmt"/>
       </file>
     </package>
   </project>
