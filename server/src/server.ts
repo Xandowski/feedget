@@ -5,7 +5,9 @@ import { routes } from './routes'
 
 export const app = express()
 
-app.use(cors())
+app.use(cors({
+  origin: true
+}))
 app.use(json({limit: '50mb'}))
 app.use(BodyParser.urlencoded({limit: '50mb', extended: true }))
 app.use((req, res, next) => {
