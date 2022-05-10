@@ -45,7 +45,7 @@ export const Index = () =>{
       api.get('/feedbacks', {
         headers: {
           'Access-Control-Allow-Origin': '*',
-          'Content-Type': 'application/json'
+          'Access-Control-Allow-Headers': 'X-Requested-With',
         }
       })
         .then(res => {
