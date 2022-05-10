@@ -23,6 +23,7 @@ export const FeedbackContentStep = ({
   const [isSendingFeedback, setIsSendingFeedback] = useState(false)
   const [username, setUsername] = useState<string>('Anônimo')
   const [profilepic, setProfilepic] = useState<string | null>(null)
+  const [email, setEmail] = useState<String | null>(null)
 
   useEffect(() =>{
     if (user?.nickname) {
@@ -36,8 +37,13 @@ export const FeedbackContentStep = ({
     if (user?.picture) {
       setProfilepic(user.picture)
     }
-  }, [])
 
+    if (user?.email) {
+      setEmail(user?.email)
+      
+    }
+  }, [])
+  
   const handleSubmitFeedback = async (event: FormEvent) => {
     event.preventDefault()
     
@@ -48,7 +54,8 @@ export const FeedbackContentStep = ({
       comment,
       screenshot,
       username,
-      profilepic
+      profilepic,
+      email
     })
 
     setIsSendingFeedback(false)

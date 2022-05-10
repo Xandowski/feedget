@@ -48,7 +48,7 @@ export const Index = () =>{
         })
     }
   }, [isAuthenticated, submitFeedback])
-
+  
   return (
     <>
       <Nav/>
