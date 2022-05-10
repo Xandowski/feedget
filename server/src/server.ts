@@ -6,7 +6,7 @@ import { routes } from './routes'
 export const app = express()
 
 app.use(cors({
-  "origin": /feedget-xandowski.vercel.app/,
+  "origin": "https://feedget-xandowski.vercel.app/",
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
   "credentials": true,
   "allowedHeaders": ['Content-Type', 'Authorization', 'X-CSRF-Token', 'X-Requested-With', 'Origin', 'Accept']
