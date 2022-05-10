@@ -6,10 +6,10 @@ import { routes } from './routes'
 export const app = express()
 
 app.use(cors({
-  "origin": true,
+  "origin": "*",
   "methods": "GET,HEAD,PUT,PATCH,POST,DELETE",
   "credentials": true,
-  "allowedHeaders": ['Content-Type', 'Authorization', 'X-CSRF-Token', 'X-Requested-With']
+  "allowedHeaders": ['Content-Type', 'Authorization', 'X-CSRF-Token', 'X-Requested-With', 'Origin', 'Accept']
 }))
 app.use(json({limit: '50mb'}))
 app.use(BodyParser.urlencoded({limit: '50mb', extended: true }))
