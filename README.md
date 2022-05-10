@@ -47,7 +47,7 @@ Feedget is a feedback application, you choose between 3 options, problem, idea a
 
 ## ⚙ Features
 
-- [ ] Reload feedbacks after a new feedback registered
+- [X] Reload feedbacks after a new feedback registered
 - [ ] Reload feedback votes after a new vote
 - [ ] Fix screenshot url
 - [ ] Only logged in users can vote

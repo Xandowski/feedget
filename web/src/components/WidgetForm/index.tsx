@@ -31,9 +31,13 @@ export const feedbackTypes = {
   }
 }
 
+interface WidgetFormProps {
+  setSubmitFeedback: React.Dispatch<React.SetStateAction<boolean>>
+}
+
 export type FeedbackType = keyof typeof feedbackTypes
 
-export const WidgetForm = () => {
+export const WidgetForm = ({setSubmitFeedback}:WidgetFormProps) => {
   const [feedbackType, setFeedbackType] = useState<FeedbackType | null>(null)
   const [feedbackSent, setFeedbackSent] = useState(false)
 
@@ -52,7 +56,8 @@ export const WidgetForm = () => {
             !feedbackType ? (
               <FeedbackTypeStep onFeedbackTypeChanged={setFeedbackType}/>
             ) : (
-              <FeedbackContentStep 
+              <FeedbackContentStep
+                setSubmitFeedback={setSubmitFeedback} 
                 feedbackTypeSelected={feedbackType}
                 onFeedbackRestartRequest={handleRestartFeedback}
                 onFeedbackSent={() => setFeedbackSent(true)}

@@ -2,11 +2,15 @@ import { Popover } from '@headlessui/react'
 import { ChatTeardropDots } from "phosphor-react"
 import { WidgetForm } from '../WidgetForm'
 
-export const WidgetButton = () => {
+interface WidgetButtonProps {
+  setSubmitFeedback: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+export const WidgetButton = ({setSubmitFeedback}: WidgetButtonProps) => {
   return (
     <Popover className="absolute bottom-4 right-4 flex flex-col items-end md:bottom-8 md:right-8">
       <Popover.Panel >
-        <WidgetForm/>
+        <WidgetForm setSubmitFeedback={setSubmitFeedback}/>
       </Popover.Panel>
     
       <Popover.Button className="

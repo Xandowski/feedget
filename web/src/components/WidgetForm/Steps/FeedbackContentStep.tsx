@@ -10,11 +10,12 @@ import { ScreenshotButton } from "../ScreenshotButton"
 interface FeedbackContentStepProps {
   feedbackTypeSelected: FeedbackType,
   onFeedbackRestartRequest: () => void,
-  onFeedbackSent: () => void
+  onFeedbackSent: () => void,
+  setSubmitFeedback: React.Dispatch<React.SetStateAction<boolean>>
 }
 
 export const FeedbackContentStep = ({
-  feedbackTypeSelected, onFeedbackRestartRequest, onFeedbackSent
+  feedbackTypeSelected, onFeedbackRestartRequest, onFeedbackSent, setSubmitFeedback
 }: FeedbackContentStepProps) => {
   const { user, isAuthenticated } = useAuth0()
   const [screenshot, setScreenshot] = useState<string | null>(null)
@@ -52,7 +53,10 @@ export const FeedbackContentStep = ({
 
     setIsSendingFeedback(false)
     onFeedbackSent()
+    setSubmitFeedback(true)
   }
+
+
 
   const feedbackTypeInfo = feedbackTypes[feedbackTypeSelected]
   let placeholder = ''

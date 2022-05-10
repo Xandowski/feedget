@@ -34,6 +34,7 @@ export const Index = () =>{
   const [feedbacks, setFeedbacks] = useState<FeedbackTypeProps[] | null>(null)
   const [colorTheme, setTheme] = useDarkMode()
   const email = user?.email ? user?.email : null
+  const [submitFeedback, setSubmitFeedback] = useState(false)
   
   const switchTheme = () => {
     setTheme(colorTheme)
@@ -43,13 +44,11 @@ export const Index = () =>{
     if (isAuthenticated) {
       api.get('/feedbacks')
         .then(res => {
-          // console.log(res.data)
           setFeedbacks(res.data)
         })
     }
-  }, [isAuthenticated])
+  }, [isAuthenticated, submitFeedback])
 
-  console.log(user)
   return (
     <>
       <Nav/>
@@ -91,7 +90,7 @@ export const Index = () =>{
       <SwitchThemeButton theme={colorTheme} onClick={switchTheme}
         className="cursor-pointer absolute top-5 right-10"
       />
-      <WidgetButton/>
+      <WidgetButton setSubmitFeedback={setSubmitFeedback}/>
     </>
   )
 }
