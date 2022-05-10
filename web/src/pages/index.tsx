@@ -42,12 +42,7 @@ export const Index = () =>{
   }
   useEffect(() => {
     if (isAuthenticated) {
-      api.get('/feedbacks', {
-        headers: {
-          'Access-Control-Allow-Origin': '*',
-          'Access-Control-Allow-Headers': 'X-Requested-With',
-        }
-      })
+      api.get('/feedbacks')
         .then(res => {
           setFeedbacks(res.data)
         })

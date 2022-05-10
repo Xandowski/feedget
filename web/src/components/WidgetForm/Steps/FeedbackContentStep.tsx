@@ -56,12 +56,6 @@ export const FeedbackContentStep = ({
       username,
       profilepic,
       email
-    },
-    {
-      headers: {
-        'Access-Control-Allow-Origin': '*',
-        'Content-Type': 'application/json'
-      }
     }
     )
 
