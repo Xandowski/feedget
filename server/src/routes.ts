@@ -66,5 +66,5 @@ routes.post('/feedback', async (req, res) => {
     voters: [email]
   })
 
-  return res.sendStatus(201).send()
+  return res.sendStatus(201)
 })
