@@ -2,11 +2,12 @@ import { SubmitFeedbackUseCase } from "./submitFeedbackUseCase"
 
 const createFeedbackSpy = jest.fn()
 const readFeedbackSpy = jest.fn()
+const readVotesFeedbackSpy = jest.fn()
 const updateFeedbackSpy = jest.fn()
 const sendMailSpy = jest.fn()
 
 const submitFeedbackUseCase = new SubmitFeedbackUseCase(
-  { create: createFeedbackSpy, read: readFeedbackSpy, update: updateFeedbackSpy},
+  { create: createFeedbackSpy, read: readFeedbackSpy, update: updateFeedbackSpy, readVotes: readVotesFeedbackSpy},
   { sendMail: sendMailSpy}
 )
 
