@@ -1,5 +1,5 @@
 import { prisma } from "../../prisma"
-import { FeedbackData, FeedbackRepository, FeedbackUpdateVotesData } from "../feedbacksRepository"
+import { FeedbackData, FeedbackRepository, FeedbackUpdateVotesData, GetFeedbackVotesData } from "../feedbacksRepository"
 
 export class PrismaFeedbackRepository implements FeedbackRepository {
   async create({type, comment, screenshot, username, profilepic, amount, voters}: FeedbackData) {
@@ -20,6 +20,19 @@ export class PrismaFeedbackRepository implements FeedbackRepository {
     const feedbacks = await prisma.feedback.findMany()
 
     return feedbacks
+  }
+
+  async readVotes({id}: GetFeedbackVotesData) {
+    const feedbackVotes = await prisma.feedback.findUnique({
+      where: {
+        id
+      },
+      select: {
+        amount: true
+      }
+    })
+
+    return feedbackVotes
   }
 
   async update({id, email}: FeedbackUpdateVotesData) {

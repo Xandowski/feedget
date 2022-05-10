@@ -14,8 +14,14 @@ export interface FeedbackUpdateVotesData {
   email: string
 }
 
+export interface GetFeedbackVotesData {
+  id: string
+}
+
+
 export interface FeedbackRepository {
   create: (data: FeedbackData) => Promise<void>
   read: () => Promise<Feedback[]>
+  readVotes: (data: GetFeedbackVotesData) => Promise<{ amount: number; } | null>
   update: (data: FeedbackUpdateVotesData) => Promise<void>
 }
