@@ -34,7 +34,7 @@ routes.put('/feedback/:id', async (req, res) => {
 })
 
 routes.post('/feedback', async (req, res) => {
-  const { type, comment, screenshot, username, profilepic } = req.body
+  const { type, comment, screenshot, username, profilepic, email } = req.body
 
   const nodemailerMailAdapter = new NodemailerMailAdapter()
 
@@ -50,7 +50,7 @@ routes.post('/feedback', async (req, res) => {
     username,
     profilepic,
     amount: 0,
-    voters: []
+    voters: [email]
   })
 
   return res.sendStatus(201).send()
