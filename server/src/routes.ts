@@ -10,14 +10,6 @@ export const routes = Router()
 
 const prismaFeedbackRepository = new PrismaFeedbackRepository()
 
-routes.all('/*', async (req, res, next) => {
-  res.header("Access-Control-Allow-Credentials", "true")
-  res.header("Access-Control-Allow-Origin", "*")
-  res.header("Access-Control-Allow-Methods", "GET,OPTIONS,PATCH,DELETE,POST,PUT")
-  res.header("Access-Control-Allow-Headers", "X-CSRF-Token, X-Requested-With")
-  next()
-})
-
 routes.get('/feedbacks', async (req, res) => {
   const getFeedbacksUseCase = new GetFeedbacksUseCase(
     prismaFeedbackRepository
