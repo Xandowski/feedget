@@ -1,5 +1,6 @@
+import { Dialog, Transition } from "@headlessui/react"
 import { CaretUp, User } from "phosphor-react"
-import { FormEvent, useEffect, useState } from "react"
+import { FormEvent, Fragment, useEffect, useState } from "react"
 import { api } from "../../services/api"
 import { FeedbackType, feedbackTypes } from "../WidgetForm"
 
@@ -24,6 +25,7 @@ export const FeedbackCard = ({
   const feedbackType = feedbackTypes[type]
   const [amountVotes, setAmountVotes] = useState<number>(amount)
   const [vote, setVote] = useState(false)
+  const [isOpen, setIsOpen] = useState(false)
   
   useEffect(() => {
     api.get(`/feedbacks/${id}/votes`)
@@ -51,11 +53,69 @@ export const FeedbackCard = ({
         {feedbackType.title}
       </span>
 
-      <section className="border-light-surface-stroke border-2 rounded-md w-full h-full
+      <section className="flex flex-col justify-between border-light-surface-stroke border-2 rounded-md w-full h-full
         dark:border-dark-surface-stroke p-2 max-h-32 overflow-scroll scrollbar-thumb-surface-stroke scrollbar-track-transparent scrollbar-thin">
         <span className="text-light-surface-text-primary dark:text-dark-surface-text-primary">{comment}</span>
         <br/>
-        <a className="text-brand-surface font-medium" href={screenshot} target="_blank">Ver imagem</a>
+        {
+          screenshot && (
+            <>
+              <button onClick={() => setIsOpen(true)} className="rounded-md bg-brand-surface px-4 py-2 text-sm font-medium text-white hover:bg-brand-hover focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-opacity-75">Ver imagem</button>
+
+              <Transition appear show={isOpen} as={Fragment}>
+                <Dialog as="div" className="relative z-10" onClose={() => setIsOpen(false)}>
+                  <Transition.Child
+                    as={Fragment}
+                    enter="ease-out duration-300"
+                    enterFrom="opacity-0"
+                    enterTo="opacity-100"
+                    leave="ease-in duration-200"
+                    leaveFrom="opacity-100"
+                    leaveTo="opacity-0"
+                  >
+                    <div className="fixed inset-0 bg-black bg-opacity-25" />
+                  </Transition.Child>
+                  <div className="fixed inset-0 overflow-y-auto">
+                    <div className="flex min-h-full items-center justify-center p-4 text-center">
+                      <Transition.Child
+                        as={Fragment}
+                        enter="ease-out duration-300"
+                        enterFrom="opacity-0 scale-95"
+                        enterTo="opacity-100 scale-100"
+                        leave="ease-in duration-200"
+                        leaveFrom="opacity-100 scale-100"
+                        leaveTo="opacity-0 scale-95"
+                      >
+                        <Dialog.Panel className="w-full max-w-screen-lg transform overflow-hidden rounded-2xl bg-light-surface-primary dark:bg-dark-surface-secondary-main p-6 text-left align-middle shadow-xl transition-all">
+                          <Dialog.Title
+                            as="h3"
+                            className="text-lg font-medium leading-6 text-light-surface-text-primary dark:text-dark-surface-text-primary"
+                          >
+                            Feedback screenshot
+                          </Dialog.Title>
+                          <div className="mt-2">
+                            <img src={screenshot} alt="screenshot feedback" />
+                          </div>
+
+                          <div className="mt-4">
+                            <button
+                              type="button"
+                              className="inline-flex justify-center rounded-md border-2 border-brand-surface bg-transparent bg-blue-100 px-4 py-2 text-sm font-semibold text-brand-surface hover:bg-brand-surface hover:text-light-surface-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-brand-hover focus-visible:ring-offset-2"
+                              onClick={() => setIsOpen(false)}
+                            >
+                              Voltar
+                            </button>
+                          </div>
+                        </Dialog.Panel>
+                      </Transition.Child>
+                    </div>
+                  </div>
+                </Dialog>
+              </Transition>
+            </>
+          )
+        }
+        
       </section>
 
       <footer className="flex justify-between items-center w-full text-light-surface-text-secondary dark:text-dark-surface-text-secondary">
