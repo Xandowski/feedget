@@ -49,8 +49,8 @@ Feedget is a feedback application, you choose between 3 options, problem, idea a
 
 - [X] Reload feedbacks after a new feedback registered
 - [X] Reload feedback votes after a new vote
+- [X] Each users can only vote once
 - [ ] Fix screenshot url
-- [ ] Each users can only vote once
 - [ ] A user can unvote
 
 ## 💻 Getting started
