@@ -10,7 +10,6 @@ const transport = nodemailer.createTransport({
   }
 })
 
-
 export class NodemailerMailAdapter implements MailAdapter {
   async sendMail({subject, body}: SendMailData) {
     await transport.sendMail({
