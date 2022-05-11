@@ -1,5 +1,5 @@
 import { CaretUp, User } from "phosphor-react"
-import { useEffect, useState } from "react"
+import { FormEvent, useEffect, useState } from "react"
 import { api } from "../../services/api"
 import { FeedbackType, feedbackTypes } from "../WidgetForm"
 
@@ -22,9 +22,9 @@ export const FeedbackCard = ({
   id, type, comment, profilePic, screenshot, username, amount, email
 }:FeedbackCardProps) => {
   const feedbackType = feedbackTypes[type]
-  const [vote, setVote] = useState(false)
   const [amountVotes, setAmountVotes] = useState<number>(amount)
-
+  const [vote, setVote] = useState(false)
+  
   useEffect(() => {
     api.get(`/feedbacks/${id}/votes`)
       .then(res => {
@@ -33,12 +33,15 @@ export const FeedbackCard = ({
     
   }, [vote])
 
-  const handleSubmitVoteFeedback = async () => {
+  const handleSubmitVoteFeedback = async (event: FormEvent) => {
+    event.preventDefault()
+    setVote(true)
+    
     await api.put(`/feedback/${id}`, {
       email
     })
-    setVote(true)
-    return
+    
+    setVote(false)
   }
 
   return (
@@ -69,12 +72,15 @@ export const FeedbackCard = ({
           </div>
           <span className="text-lg">{username}</span>
         </div>
-        <div className="flex flex-col items-center">
-          <button type="button" onClick={handleSubmitVoteFeedback}>
+        <form 
+          className="flex flex-col items-center"
+          onSubmit={handleSubmitVoteFeedback}
+        >
+          <button type="submit">
             <CaretUp/>
           </button>
           <span className="text-lg">{amountVotes}</span>
-        </div>
+        </form>
       </footer>
     </div>
   )

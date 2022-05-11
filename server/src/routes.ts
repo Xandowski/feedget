@@ -44,6 +44,8 @@ routes.put('/feedback/:id', async (req, res) => {
     id,
     email
   })
+
+  return res.sendStatus(201)
 })
 
 routes.post('/feedback', async (req, res) => {

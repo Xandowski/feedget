@@ -35,6 +35,7 @@ export const Index = () =>{
   const [colorTheme, setTheme] = useDarkMode()
   const email = user?.email ? user?.email : null
   const [submitFeedback, setSubmitFeedback] = useState(false)
+
   
   const switchTheme = () => {
     setTheme(colorTheme)
@@ -49,6 +50,8 @@ export const Index = () =>{
     }
     
   }, [isAuthenticated, submitFeedback])
+
+  
   
   return (
     <>
