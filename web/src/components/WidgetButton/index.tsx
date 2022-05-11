@@ -8,7 +8,7 @@ interface WidgetButtonProps {
 
 export const WidgetButton = ({setSubmitFeedback}: WidgetButtonProps) => {
   return (
-    <Popover className="absolute bottom-4 right-4 flex flex-col items-end md:bottom-8 md:right-8">
+    <Popover className="fixed bottom-4 right-4 flex flex-col items-end md:bottom-8 md:right-8">
       <Popover.Panel >
         <WidgetForm setSubmitFeedback={setSubmitFeedback}/>
       </Popover.Panel>
