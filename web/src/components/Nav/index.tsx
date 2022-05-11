@@ -1,4 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import { SignOut } from "phosphor-react";
 import Logo from '../../assets/imgs/logo.svg';
 
 const LogoutButton = ({}) => {
@@ -6,7 +7,7 @@ const LogoutButton = ({}) => {
 
   if (isAuthenticated){
   return (
-    <div className="flex flex-col justify-center items-center">
+    <div className="flex flex-col justify-between gap-2 items-center">
       <div>
         {isLoading ? (
           <div className="w-10 h-10 rounded-full bg-light-surface-text-secondary"></div>
@@ -15,9 +16,7 @@ const LogoutButton = ({}) => {
         )}
         
       </div>
-      <button className="text-sm text-light-surface-text-secondary dark:text-dark-surface-text-secondary" onClick={() => logout({ returnTo: window.location.origin })}>
-        Sair
-      </button>
+      <SignOut size={18} className="cursor-pointer text-sm text-light-surface-text-secondary dark:text-dark-surface-text-secondary" onClick={() => logout({ returnTo: window.location.origin })}/>
     </div>
   )}
 

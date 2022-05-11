@@ -85,7 +85,7 @@ export const Index = () =>{
         </div>
       </section>
       <SwitchThemeButton theme={colorTheme} onClick={switchTheme}
-        className="cursor-pointer absolute top-5 right-10"
+        className="cursor-pointer absolute top-5 right-2 md:right-10"
       />
       <WidgetButton setSubmitFeedback={setSubmitFeedback}/>
     </>
