@@ -2,20 +2,13 @@ import { useAuth0 } from "@auth0/auth0-react"
 import { useEffect, useState } from "react"
 import { FeedbackCard } from "../components/FeedbackCard"
 import { FeedbackCardLoading } from "../components/FeedbackCard/FeedbackCardLoading"
+import { LoginButton } from "../components/LoginButton"
 import { Nav } from "../components/Nav"
 import { SwitchThemeButton } from "../components/SwitchThemeButton"
 import { WidgetButton } from "../components/WidgetButton"
 import { FeedbackType } from "../components/WidgetForm"
 import { useDarkMode } from "../hook/useDarkMode"
 import { api } from "../services/api"
-
-const LoginButton = () => {
-  const { loginWithRedirect } = useAuth0()
-
-  return <button onClick={() => loginWithRedirect()}>Login</button>;
-}
-
-export default LoginButton
 
 type FeedbackTypeProps = {
   id: string
@@ -63,7 +56,7 @@ export const Index = () =>{
             <h1 className="font-medium text-lg px-2 sm:px-0 sm:text-2xl text-light-surface-text-secondary dark:text-dark-surface-text-secondary">Experimente enviar um feedback de um bug na aplicação.</h1>
           </>
         ) : (
-          <h1 className="font-medium text-2xl text-light-surface-text-secondary dark:text-dark-surface-text-secondary">Faça <span className="text-brand-surface cursor-pointer"><LoginButton/></span> para visualizar os feedbacks cadastrados.</h1>
+          <h1 className="font-medium text-2xl text-light-surface-text-secondary dark:text-dark-surface-text-secondary">Faça o <span><LoginButton/></span> para visualizar e cadastrar feedbacks.</h1>
         )}
 
         <div className="mt-8 mb-20 max-w-[1072px] h-full flex flex-wrap gap-8">
