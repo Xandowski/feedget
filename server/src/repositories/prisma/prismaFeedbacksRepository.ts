@@ -45,12 +45,12 @@ export class PrismaFeedbackRepository implements FeedbackRepository {
       }
     })
 
-    if (emailsVoter?.voters != null) {
+    if (emailsVoter?.voters) {
       const emailVoter = emailsVoter.voters.filter((e) => {
         return e == email
       })
 
-      if (emailVoter) {
+      if (emailVoter.length === 0) {
         await prisma.feedback.update({
           where: {
             id

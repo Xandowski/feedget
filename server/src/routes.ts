@@ -65,7 +65,7 @@ routes.post('/feedback', async (req, res) => {
     username,
     profilepic,
     amount: 0,
-    voters: [email]
+    voters: email ? [email] : []
   })
 
   return res.sendStatus(201)
