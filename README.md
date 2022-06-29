@@ -60,27 +60,27 @@ Feedget is a feedback application, you choose between 3 options, problem, idea a
 git clone https://github.com/xandowski/feedget.git && cd feedget
 ```
 
+to run postgres database and adminer:
+
+```sh
+docker compose up -d
+```
+
 to run backend:
 
 ```sh
 cd server
-yarn
-yarn dev
-```
-
-inside server create a .env file based on .env.example
-then run:
-
-```sh
+npm install
 npx prisma generate
+npm run dev
 ```
 
 to run frontend:
 
 ```sh
 cd web
-yarn
-yarn dev
+npm install
+npm run dev
 ```
 
-inside web change .env.example to .env.local em put your localhost url for the api.
+inside web and server change `.env.example` to `.env.local` or `.env` and put your credentials.
